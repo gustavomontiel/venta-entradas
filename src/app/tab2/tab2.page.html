@@ -1,17 +1,54 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Cargar Cantidades y precios
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  
+  <ion-list>
+    
+    <ion-list-header lines="full">
+      <ion-label>
+        <ion-text color="primary"><h2>Entradas Hombres</h2></ion-text>
+      </ion-label>
+    </ion-list-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <ion-item>
+      <ion-label>Cantidad recibida:</ion-label>
+      <ion-input *ngIf="entradasHombres" clearInput clearInput type="number" [(ngModel)]="entradasHombres.recibido"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Precio venta:</ion-label>
+      <ion-input *ngIf="entradasHombres" clearInput type="number" [(ngModel)]="entradasHombres.precio"></ion-input>
+    </ion-item>
+
+    <ion-item-divider>
+      <ion-label>
+      </ion-label>
+    </ion-item-divider>
+    
+    <ion-list-header lines="full">
+      <ion-label>
+        <ion-text color="tertiary"><h2>Entradas Mujeres</h2></ion-text>
+      </ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Cantidad recibida:</ion-label>
+      <ion-input *ngIf="entradasMujeres" clearInput type="number" [(ngModel)]="entradasMujeres.recibido"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Precio venta:</ion-label>
+      <ion-input *ngIf="entradasMujeres" clearInput type="number" [(ngModel)]="entradasMujeres.precio"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <ion-button expand="block" (click)="guardar()">Guardar</ion-button>
+  <ion-button expand="block" color="danger" class="ion-margin-top" (click)="borrarVendidos()">Borrar vendidos</ion-button>
+
 </ion-content>

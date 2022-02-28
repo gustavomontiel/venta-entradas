@@ -1,17 +1,78 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Venta de entradas 
+      <ion-badge color="primary">{{(jornada ? jornada.efectivo : 0) | currency}}</ion-badge>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col><h3 *ngIf="entradasHombres">Entrada Hombres {{ entradasHombres.precio | currency }}</h3></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button size="large" color="danger" expand="block" (click)="devolverEntradasHombres(cantHombreVender)">
+          <ion-icon name="remove-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-input type="number" class="form-input" [(ngModel)]="cantHombreVender" ></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-button size="large" color="primary" expand="block" (click)="venderEntradasHombres(cantHombreVender)">
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center">
+      <ion-col><h5>Recibido</h5></ion-col>
+      <ion-col><h5>Vendido</h5></ion-col>
+      <ion-col><h5>Quedan</h5></ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center" *ngIf="entradasHombres">
+      <ion-col>{{ entradasHombres.recibido }}</ion-col>
+      <ion-col>{{ entradasHombres.vendido }}</ion-col>
+      <ion-col>{{ entradasHombres.quedan }}</ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col><h3 *ngIf="entradasMujeres">Entrada Mujeres {{ entradasMujeres.precio | currency }}</h3></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button size="large" color="danger" expand="block" (click)="devolverEntradasMujeres(cantMujerVender)">
+          <ion-icon name="remove-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-input type="number" class="form-input" [(ngModel)]="cantMujerVender" ></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-button size="large" color="primary" expand="block" (click)="venderEntradasMujeres(cantMujerVender)">
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center">
+      <ion-col><h5>Recibido</h5></ion-col>
+      <ion-col><h5>Vendido</h5></ion-col>
+      <ion-col><h5>Quedan</h5></ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center" *ngIf="entradasMujeres">
+      <ion-col>{{ entradasMujeres.recibido }}</ion-col>
+      <ion-col>{{ entradasMujeres.vendido }}</ion-col>
+      <ion-col>{{ entradasMujeres.quedan }}</ion-col>
+    </ion-row>
+
+    <ion-item-divider>
+      <ion-label>
+      </ion-label>
+    </ion-item-divider>
+
+  </ion-grid>
+
 </ion-content>
